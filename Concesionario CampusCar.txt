@@ -1,0 +1,467 @@
+﻿Concesionario CampusCar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ALEJANDRA MACHUCA MOLINA
+
+
+
+
+
+
+
+
+DOCENTE
+
+
+
+
+
+
+PEDRO FELIPE GÓMEZ BONILLA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CAMPUSLANDS
+SANDBOX GRUPO T2
+RUTA BASE DE DATOS
+TIBÚ
+2024
+
+
+
+
+
+
+
+
+
+
+
+
+Tabla de Contenidos
+
+
+Introducción        4
+Caso de Estudio        5
+Planificación        5
+Construcción del Modelo Conceptual        5
+Descripción        6
+Gráfica        6
+Construcción del Modelo Lógico        7
+Descripción        7
+Gráfica        8
+Normalización del Modelo Lógico        8
+Primera Forma Normal (1FN)        8
+Descripción        8
+Segunda Forma Normal (2FN)        9
+Descripción        9
+Tercera Forma Normal (3FN)        9
+Descripción        9
+Construcción del Modelo Físico        9
+Descripción        9
+Código        10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Introducción
+
+
+
+
+En este documento podremos ver el diseño y representación de una base de datos para un concesionario de vehículos que gestionará la información sobre los vehículos en stock, clientes, ventas, y servicios de mantenimiento. La base de datos permitirá registrar y gestionar vehículos, vendedores, clientes, transacciones de ventas y servicios realizados.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Caso de Estudio
+
+
+
+
+Se debe crear un diseño de una base de datos donde se podrá gestionar la información de los vehículos en stock, clientes, ventas y servicios de mantenimiento. Además de esto, permite registrar y gestionar vehículos, vendedores, clientes, transacciones de ventas y servicios realizados. Contendrá un diagrama UML E-R que representará la estructura de dicha base de datos.
+
+
+
+
+Planificación
+
+
+Construcción del Modelo Conceptual
+
+
+* Vehículos: Id, marca, modelo, año, número de serie único, precio, color, tipo de combustible, tipo de transmisión, estado
+
+
+* Clientes: Id_cliente, nombre, teléfono, correo electrónico, dirección
+
+
+* Vendedores: Id_vendedor, nombre, número de empleado, fecha de contratación, múltiples ventas, transacciones de ventas}
+
+
+* Ventas: id_venta, cliente, vendedor, vehículos, fecha de la venta, total transacción, método de pago
+
+
+* Mantenimiento: id_mantenimiento, mantenimiento, tipo de servicio, costo, fecha del servicio, cliente, vehículo
+
+
+Relaciones
+
+
+* Clientes a Vehículos 1:N
+
+
+* Vendedores a Clientes 1:1
+
+
+* Vehículos a mantenimiento 1:N
+
+
+* Vendedores a Ventas 1:N
+
+
+
+
+Descripción
+
+
+Las entidades representan los objetos de interés para el sistema, estas contienen atributos que describen sus características. Las relaciones representan las asociaciones entre las entidades (si aplica o si existe).
+
+
+Gráfica
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Construcción del Modelo Lógico
+
+
+Descripción
+
+
+Contiene distintas entidades dadas en el caso de estudio. Estas entidades tienen atributos que representan sus características, las cuales son: 
+
+
+
+
+1. Vehículos: 
+* Su llave principal es id_vehiculo
+* Sus atributos son: marca, modelo, año, número de serie único, precio, color, tipo de combustible, tipo de transmisión, estado.
+
+
+2. Clientes:
+* Su llave principal es id_cliente
+* Sus atributos son: nombre, teléfono, correo electrónico, dirección
+
+
+3. Vendedores:
+* Su llave principal es id_vendedor
+* Sus atributos son: nombre, número de empleado, fecha de contratación, múltiples ventas, transacciones de ventas.
+
+
+4. Ventas:
+* Su llave principal es id_venta
+* Su llave foránea es id_vehiculo
+* Sus atributos son: cliente, vendedor, vehículos, fecha de la venta, total transacción, método de pago
+
+
+5. Mantenimiento:
+* Su llave principal es id_mantenimiento
+* Su llave foránea es id_vehículo
+* Sus atributos son: mantenimiento, tipo de servicio, costo, fecha del servicio, cliente, vehículo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gráfica
+
+
+
+
+  
+
+
+
+
+
+
+
+Normalización del Modelo Lógico
+
+
+Primera Forma Normal (1FN)
+Descripción
+Se establece que los atributos deben ser atómicos, es decir que el número de valores que puede tomar un atributo debe limitarse a uno. Este se basa en las características del modelo relacional. Algunas de estas son que cada fila de la misma tabla debe ser única y que debe prevalecer un crecimiento vertical de los datos y no horizontal.
+
+
+Segunda Forma Normal (2FN)
+Descripción
+Se debe tener una clave clave principal, de preferencia simple. Cada atributo de la tabla debe depender totalmente del atributo clave. Este se basa en el concepto de dependencias funcionales.
+
+
+Tercera Forma Normal (3FN)
+Descripción
+Se basa en el concepto de dependencias transitivas. Para esto, debe estar primero en 2FN y no deben existir atributos no principales que dependan transitivamente del atributo clave.
+
+
+
+
+
+
+Construcción del Modelo Físico
+Descripción
+
+
+Ya esta es la última etapa del proceso, se basa en el modelo lógico y se utiliza para implementar dicho modelo en una base de datos real. Este modelo consta de tablas, columnas y relaciones
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Código
